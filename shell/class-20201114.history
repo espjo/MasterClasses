@@ -1,6 +1,3 @@
-ls
-cd nic_monitor-probe
-ls
 cd nic_monitor
 ls
 cd target
@@ -1002,4 +999,7 @@ cd -
 vi test
 git_commits
 git_commitsexit
+exit
+cd ~/Desktop
+echo $HISTSIZE
 exit
