@@ -111,5 +111,19 @@ This Line Has All Its First Character Of The Word With Upper Case.
 [je637620@C02Z40BTLVDM shell (master)*# wc -l ../opentraveldata/optd_aircraft.csv 
      458 ../opentraveldata/optd_aircraft.csv
 
+# Find all files located inside subdirectories of your home directory which have been modified in last 60min
+[je637620@C02Z40BTLVDM DS_CL_files (master)*# find . -type f -mmin +60 | wc -l
+      32
 
+# Find all empty files inside subdirectories of your home directory which do NOT have read-write-execute
+permissions given to all users
+[je637620@C02Z40BTLVDM DS_CL_files (master)*# touch shell/Empty_file.txt
+[je637620@C02Z40BTLVDM DS_CL_files (master)*# ls -la shell/Empty_file.txt   
+-rw-r--r--  1 je637620  staff  0 Nov 17 19:50 shell/Empty_file.txt
+[je637620@C02Z40BTLVDM DS_CL_files (master)*# find . -type f -size 0 -perm -000                      
+./shell/Empty_file.txt
+# Expand previous command to grant these permissions using “ok” option.
+[je637620@C02Z40BTLVDM DS_CL_files (master)*# find . -type f -size 0 -perm -000 -exec chmod 007 {} \;
+[je637620@C02Z40BTLVDM DS_CL_files (master)*# ls -la shell/Empty_file.txt                            
+-------rwx  1 je637620  staff  0 Nov 17 19:50 shell/Empty_file.txt
 
