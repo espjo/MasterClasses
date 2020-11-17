@@ -56,3 +56,18 @@ locate the lines ending with “works”
 [je637620@C02Z40BTLVDM shell# grep "works$" Finn.txt | wc -l          
        0
 
+# Save the information (permissions, size, modification date etc.) of the largest file located inside
+opentraveldata directory into a file largest_file.txt. (hint: use ls with sort option and pipe the
+result)
+[je637620@C02Z40BTLVDM opentraveldata# ls -lSh . | head -2 | tail -1 > largest_file.txt 
+[je637620@C02Z40BTLVDM opentraveldata# cat largest_file.txt 
+-rw-r--r--  1 je637620  staff   7.7M Nov 14 12:16 optd_por_public.csv
+# How many words do first 5 lines of the Finn.txt have?
+[je637620@C02Z40BTLVDM opentraveldata# head -5 ../shell/Finn.txt | wc -w
+      16
+# Print first 3 lines of Text_example.txt together with line numbers (hint: use cat and head)
+[je637620@C02Z40BTLVDM opentraveldata# cat -n ../shell/Text_example.txt | head -3 
+     1	THIS LINE IS THE 1ST UPPER CASE LINE IN THIS FILE.
+     2	this line is the 1st lower case line in this file.
+     3	This Line Has All Its First Character Of The Word With Upper Case.
+
