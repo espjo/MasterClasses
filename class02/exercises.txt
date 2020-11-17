@@ -1,0 +1,50 @@
+# Create a directory “first_dir” in you home folder
+[je637620@C02Z40BTLVDM Desktop# mkdir first_dir
+# Create an empty file “text_file.txt” inside “first_dir” directory.
+[je637620@C02Z40BTLVDM Desktop# touch first_dir/text_file.txt
+# Add execute permissions to group users, and write permissions to other users to “text_file.txt”
+[je637620@C02Z40BTLVDM Desktop# chmod 612 first_dir/text_file.txt 
+[je637620@C02Z40BTLVDM Desktop# ls -la first_dir/text_file.txt 
+-rw---x-w-  1 je637620  staff  0 Nov 17 18:49 first_dir/text_file.txt
+# Create 3 subdirectories inside “first_dir”: “sub1”, “sub2”, “text_file”
+[je637620@C02Z40BTLVDM Desktop# mkdir first_dir/sub1 first_dir/sub2 first_dir/text_file
+[je637620@C02Z40BTLVDM Desktop# ls first_dir 
+sub1		sub2		text_file	text_file.txt
+# Copy the “text_file.txt” file into “sub1” directory.
+[je637620@C02Z40BTLVDM Desktop# cp first_dir/text_file.txt first_dir/sub1 
+[je637620@C02Z40BTLVDM Desktop# ls first_dir/sub1 
+text_file.txt
+# Move the “text_file.txt” into sub2 under name “text_file.txt.2”
+[je637620@C02Z40BTLVDM Desktop# mv first_dir/text_file.txt first_dir/sub2/text_file.txt.2 
+[je637620@C02Z40BTLVDM Desktop# ls first_dir 
+sub1		sub2		text_file
+[je637620@C02Z40BTLVDM Desktop# ls first_dir/sub2 
+text_file.txt.2
+# Copy the whole directory “sub1” to “sub3” directory. 
+[je637620@C02Z40BTLVDM Desktop# cp -R first_dir/sub1 first_dir/sub3
+[je637620@C02Z40BTLVDM Desktop# ls first_dir 
+sub1		sub2		sub3		text_file
+[je637620@C02Z40BTLVDM Desktop# ls first_dir/sub1
+text_file.txt
+[je637620@C02Z40BTLVDM Desktop# ls first_dir/sub3
+text_file.txt
+# Change file name of “first_dir /sub2/text_file.txt.2” to “first_dir /sub2/text_file.txt.backup”
+[je637620@C02Z40BTLVDM Desktop# mv first_dir/sub2/text_file.txt first_dir/sub2/text_file.backup
+[je637620@C02Z40BTLVDM Desktop# ls first_dir/sub2
+text_file.backup
+# Move “first_dir /sub2/text_file.txt.backup” to “first_dir” directory as hidden file
+[je637620@C02Z40BTLVDM Desktop# mv first_dir/sub2/text_file.backup first_dir/.text_file.backup
+[je637620@C02Z40BTLVDM Desktop# ls -la first_dir/
+total 0
+drwxr-xr-x   7 je637620  staff  224 Nov 17 18:53 .
+drwx------@ 19 je637620  staff  608 Nov 17 18:49 ..
+-rw---x-w-   1 je637620  staff    0 Nov 17 18:49 .text_file.backup
+drwxr-xr-x   3 je637620  staff   96 Nov 17 18:51 sub1
+drwxr-xr-x   2 je637620  staff   64 Nov 17 18:53 sub2
+drwxr-xr-x   3 je637620  staff   96 Nov 17 18:52 sub3
+drwxr-xr-x   2 je637620  staff   64 Nov 17 18:50 text_file
+# Delete the “sub2” subdirectory
+[je637620@C02Z40BTLVDM Desktop# rm -rf first_dir/sub2 
+[je637620@C02Z40BTLVDM Desktop# ls first_dir 
+sub1		sub3		text_file
+
