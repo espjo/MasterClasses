@@ -48,3 +48,11 @@ drwxr-xr-x   2 je637620  staff   64 Nov 17 18:50 text_file
 [je637620@C02Z40BTLVDM Desktop# ls first_dir 
 sub1		sub3		text_file
 
+Go to data/shell/ directory and use less to open Finn.txt
+locate the lines starting with “The”
+[je637620@C02Z40BTLVDM shell# grep "^The" Finn.txt | wc -l          
+     183
+locate the lines ending with “works”
+[je637620@C02Z40BTLVDM shell# grep "works$" Finn.txt | wc -l          
+       0
+
