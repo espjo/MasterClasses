@@ -71,3 +71,45 @@ result)
      2	this line is the 1st lower case line in this file.
      3	This Line Has All Its First Character Of The Word With Upper Case.
 
+# Use Text_example.txt to generate a new file with the same content but with line number at the beginning
+of each line.
+[je637620@C02Z40BTLVDM shell (master)# cat -n Text_example.txt > New_Text_example.txt
+[je637620@C02Z40BTLVDM shell (master)*# head New_Text_example.txt 
+     1	THIS LINE IS THE 1ST UPPER CASE LINE IN THIS FILE.
+     2	this line is the 1st lower case line in this file.
+     3	This Line Has All Its First Character Of The Word With Upper Case.
+     4	
+     5	
+     6	Two lines above this are empty.
+     7	And this is the last line.
+# Generate a new file with twice the content of “Text_example.txt” one after another inside the file. (one
+full text content after another)
+[je637620@C02Z40BTLVDM shell (master)*# cat Text_example.txt Text_example.txt > Twice_Text_example.txt
+# Generate a file with creation timestamp and name of the user who created it on the first line. Something
+like this:
+"# This file is created by KSCHOOL on:Sun Nov 26 10:31:06 CET 2017"
+[je637620@C02Z40BTLVDM shell (master)*# echo "# This file is created by $(whoami) on $(date)" > Text_creation.txt
+[je637620@C02Z40BTLVDM shell (master)*# head Text_creation.txt 
+# This file is created by je637620 on Tue Nov 17 19:23:07 CET 2020
+
+Save last 20 commands used at command line to a file. (hint use history and redirect the output)
+[je637620@C02Z40BTLVDM shell (master)*# tail -20 ~/.zsh_history > Last20_commands.txt
+[je637620@C02Z40BTLVDM shell (master)*# cat Last20_commands.txt  | wc -l
+      20
+# Print content of Text_example.txt except first 2 and last 3 lines.
+[je637620@C02Z40BTLVDM shell (master)*# cat Text_example.txt
+THIS LINE IS THE 1ST UPPER CASE LINE IN THIS FILE.
+this line is the 1st lower case line in this file.
+This Line Has All Its First Character Of The Word With Upper Case.
+
+
+Two lines above this are empty.
+And this is the last line.
+[je637620@C02Z40BTLVDM shell (master)*# tail -n $(expr $(cat Text_example.txt | wc -l) - 2) Text_example.txt | head -n $(expr $(cat Text_example.txt | wc -l) - 5)
+This Line Has All Its First Character Of The Word With Upper Case.
+# How many lines does optd_aircraft.csv file have?0
+[je637620@C02Z40BTLVDM shell (master)*# wc -l ../opentraveldata/optd_aircraft.csv 
+     458 ../opentraveldata/optd_aircraft.csv
+
+
+
