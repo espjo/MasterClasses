@@ -1,0 +1,54 @@
+# Find top 10 files by size in your home directory including the subdirectories. Sort them by size and print
+the result including the size and the name of the file (hint: use find with -size and -exec ls -s parameters) 
+find . -type d -exec sh -c "echo Directory: {}; ls -lS {} | head -10" \;
+
+#Create a dummy file with this command : seq 15> 20lines.txt; seq 9 1 20 >> 20lines.txt; echo "20\n20" >> 20lines.txt; 
+# Sort the lines of file based on alphanumeric characters
+cat 20lines.txt | sort
+# Sort the lines of file based on numeric values and eliminate the duplicates
+cat 20lines.txt | sort -n | uniq
+# Print all duplicated lines of the file
+cat 20lines.txt | sort -n | uniq -d
+# Print the line which has most repetitions
+cat 20lines.txt | sort -n | uniq -c | sort -n -r | head -1
+
+# Create another file with this command : seq 0 2 40 > 20lines2.txt
+# Create 3rd file from the first two but without duplicates
+cat 20lines.txt 20lines2.txt | sort -n | uniq
+
+# Merge the first two files. Print unique lines together with the number of occurrences inside the merged file and sorted based on line content.
+cat 20lines.txt 20lines2.txt | sort -n | uniq -c | sort -n -k2
+
+# Go to ~/Data/opentraveldata. Get the line with the highest number of engines using sort.
+cat -n <(head -1 optd_aircraft.csv | tr "^" "\n")
+sort -t "^" -k7rn optd_aircraft.csv| head -1
+
+
+# Change the delimiter of optd_aircraft.csv to “,”
+sed "s/\^/,/g" optd_aircraft.csv
+
+# How many columns has optd_por_public.csv? (hint: use head and tr)
+cat <(head -1 optd_por_public.csv | tr "^" "\n") | wc -l
+
+# Print column names of optd_por_public.csv together with their column number.
+cat -n <(head -1 optd_por_public.csv | tr "^" "\n")
+
+# Use optd_airlines.csv to obtain the airline with the most flights?
+sort -t "^" -k14rn optd_airlines.csv| head -1
+
+# Use optd_airlines.csv to obtain number of airlines in each alliance?
+cut -d"^" -f10 optd_airlines.csv | grep -v "^$" | sort | uniq -c | sort -rn
+
+# Use grep to obtain the number of airlines with prefix “aero” (case insensitive) in their name from optd_airlines.csv
+cut -d"^" -f8 optd_airlines.csv | grep -i "^aero"
+
+# How many optd_por_public.csv columns have “name” as part of their name? What are their numerical positions? (hint: use seq and paste)
+cat -n <(head -1 optd_por_public.csv | tr "^" "\n") | grep "name"
+
+
+# Use Text_example.txt
+# Replace every “line” with new line character (“\n”)
+sed "s/line/\n" Text_example.txt
+
+# Print ONLY the lines that DON’T contain the “line” word
+grep -v -w "line" Text_example.txt 
